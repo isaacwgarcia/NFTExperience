@@ -1,0 +1,208 @@
+{
+  "/timezone": {
+    "get": {
+      "summary": "a listing of all timezones.",
+      "responses": {
+        "default": {
+          "$ref": "#/components/responses/SuccessfulListJsonResponse"
+        }
+      }
+    }
+  },
+  "/timezone.txt": {
+    "get": {
+      "summary": "a listing of all timezones.",
+      "responses": {
+        "default": {
+          "$ref": "#/components/responses/SuccessfulListTextResponse"
+        }
+      }
+    }
+  },
+  "/timezone/{area}": {
+    "get": {
+      "summary": "a listing of all timezones available for that area.",
+      "parameters": [
+        {
+          "name": "area",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "$ref": "#/components/responses/SuccessfulListJsonResponse"
+        },
+        "default": {
+          "$ref": "#/components/responses/ErrorJsonResponse"
+        }
+      }
+    }
+  },
+  "/timezone/{area}.txt": {
+    "get": {
+      "summary": "a listing of all timezones available for that area.",
+      "parameters": [
+        {
+          "name": "area",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "$ref": "#/components/responses/SuccessfulListTextResponse"
+        },
+        "default": {
+          "$ref": "#/components/responses/ErrorTextResponse"
+        }
+      }
+    }
+  },
+  "/timezone/{area}/{location}": {
+    "get": {
+      "summary": "request the current time for a timezone.",
+      "parameters": [
+        {
+          "name": "area",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "location",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "$ref": "#/components/responses/SuccessfulDateTimeJsonResponse"
+        },
+        "default": {
+          "$ref": "#/components/responses/ErrorJsonResponse"
+        }
+      }
+    }
+  },
+  "/timezone/{area}/{location}.txt": {
+    "get": {
+      "summary": "request the current time for a timezone.",
+      "parameters": [
+        {
+          "name": "area",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "location",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "$ref": "#/components/responses/SuccessfulDateTimeTextResponse"
+        },
+        "default": {
+          "$ref": "#/components/responses/ErrorTextResponse"
+        }
+      }
+    }
+  },
+  "/timezone/{area}/{location}/{region}": {
+    "get": {
+      "summary": "request the current time for a timezone.",
+      "parameters": [
+        {
+          "name": "area",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "location",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "region",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "$ref": "#/components/responses/SuccessfulDateTimeJsonResponse"
+        },
+        "default": {
+          "$ref": "#/components/responses/ErrorJsonResponse"
+        }
+      }
+    }
+  },
+  "/timezone/{area}/{location}/{region}.txt": {
+    "get": {
+      "summary": "request the current time for a timezone.",
+      "parameters": [
+        {
+          "name": "area",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "location",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "region",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "$ref": "#/components/responses/SuccessfulDateTimeTextResponse"
+        },
+        "default": {
+          "$ref": "#/components/responses/ErrorTextResponse"
+        }
+      }
+    }
+  }
+}

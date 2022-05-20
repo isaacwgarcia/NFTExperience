@@ -6,14 +6,21 @@ import "@chainlink/contracts/src/v0.8/ChainlinkClient.sol";
 // API : http://worldtimeapi.org/pages/schema
 
 
-contract APINFTExperience is ChainlinkClient {
+contract APIExperience is ChainlinkClient {
     using Chainlink for Chainlink.Request;
 
-    uint256 public volume;
+    uint256 public timeLeft; 
+    bytes32 public firstName;
+    bytes32 public lastName;
+
 
     address private oracle;
     bytes32 private jobId;
     uint256 private fee;
+
+    // When TimeLeft == 0 emit this Event
+    event ExperienceFinished(bytes32 firstName, bytes32 lastName, uint256 TimeLeft);
+
 
 
     /**
@@ -34,12 +41,12 @@ contract APINFTExperience is ChainlinkClient {
      * Create a Chainlink request to retrieve API response, find the target
      * data, then multiply by 1000000000000000000 (to remove decimal places from data).
      */
-    function requestVolumeData() public returns (bytes32 requestId) 
+    function requestEndOfExperience() public returns (bytes32 requestId) 
     {
         Chainlink.Request memory request = buildChainlinkRequest(jobId, address(this), this.fulfill.selector);
         
         // Set the URL to perform the GET request on
-        request.add("get", "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD");
+        request.add("get", "https://demo.storj-ipfs.com/ipfs/Qmbphx6C8FE2Ko6qTUmCanQBVyuufCgrRSTWkKwvBqyUds");
         
         // Set the path to find the desired data in the API response, where the response format is:
         // {"RAW":
@@ -52,7 +59,7 @@ contract APINFTExperience is ChainlinkClient {
         //   }
         //  }
         // request.add("path", "RAW.ETH.USD.VOLUME24HOUR"); // Chainlink nodes prior to 1.0.0 support this format
-        request.add("path", "RAW,ETH,USD,VOLUME24HOUR"); // Chainlink nodes 1.0.0 and later support this format
+        request.add("path", "timezone.get.responses.default"); // add a nested path 
         
         // Multiply the result by 1000000000000000000 to remove decimals
         int timesAmount = 10**18;
@@ -65,9 +72,9 @@ contract APINFTExperience is ChainlinkClient {
     /**
      * Receive the response in the form of uint256
      */ 
-    function fulfill(bytes32 _requestId, uint256 _volume) public recordChainlinkFulfillment(_requestId)
+    function fulfill(bytes32 _requestId, uint256 _timeLeft) public recordChainlinkFulfillment(_requestId)
     {
-        volume = _volume;
+        timeLeft = _timeLeft;
     }
 
     // function withdrawLink() external {} - Implement a withdraw function to avoid locking your LINK in the contract
@@ -75,5 +82,3 @@ contract APINFTExperience is ChainlinkClient {
 
 
 
-
-}

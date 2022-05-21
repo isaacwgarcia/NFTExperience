@@ -125,6 +125,30 @@
   padding: 10px 0px 0px;
 }
 
+.form {
+  width: 300px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fafafa;
+  border-radius: 20px;
+  border: 5px solid black;
+}
+
+.form textarea {
+  margin-bottom: 15px;
+}
+
+.form textarea,
+.form input,
+.form label {
+  display: block;
+  width: 100%;
+}
+
+.form input {
+  margin-bottom: 15px;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;

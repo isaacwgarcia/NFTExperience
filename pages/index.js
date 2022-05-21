@@ -23,12 +23,46 @@ export default function Home() {
       </Head>
       <Navbar />
       <main className={styles.main}>
-        <h3>
-          Welcome to <a>NFTExperience!</a>
-        </h3>
-        <h1 className={styles.title}>
-        Using dynamic NFTs to enhance experiences around the world.
-        </h1>
+        <div className={styles.section}>
+          <h3 className={styles.centered}>
+            Welcome to <a>NFTExperience!</a>
+          </h3>
+          <h1 className={styles.title}>
+          Using dynamic NFTs to enhance experiences around the world.
+          </h1>
+        </div>
+        <div className={styles.section}>
+          <h2 className={styles.centered}>Featured Experiences</h2>
+          <div className={styles.grid}>
+          <a href="#" className={styles.card}>
+            <h4>Miami</h4>
+            <h2>Kayak Through Biscayne Bay</h2>
+            <p>Learn about Miami&apos;s brand new city center in the financial district. After a bit of retail therapy we&apos;re going to swing over the world famous art district called Wynwood.</p>
+            <p className={styles.buyLink}>Book this experience →</p>
+          </a>
+
+          <a href="#" className={styles.card}>
+            <h4>Miami</h4>
+            <h2>Brickell City Center &amp; Wynwood</h2>
+            <p>Learn about Miami&apos;s brand new city center in the financial district. After a bit of retail therapy we&apos;re going to swing over the world famous art district called Wynwood.</p>
+            <p className={styles.buyLink}>Book this experience →</p>
+          </a>
+
+          <a href="#" className={styles.card}>
+            <h4>Miami</h4>
+            <h2>Historic Calle Ocho</h2>
+            <p>Learn about Miami&apos;s brand new city center in the financial district. After a bit of retail therapy we&apos;re going to swing over the world famous art district called Wynwood.</p>
+            <p className={styles.buyLink}>Book this experience →</p>
+          </a>
+
+          <a href="#" className={styles.card}>
+            <h4>Miami</h4>
+            <h2>Coconut Grove Tour</h2>
+            <p>Learn about Miami&apos;s brand new city center in the financial district. After a bit of retail therapy we&apos;re going to swing over the world famous art district called Wynwood.</p>
+            <p className={styles.buyLink}>Book this experience →</p>
+          </a>
+        </div>
+        </div>
       </main>
 
       <footer className={styles.footer}>

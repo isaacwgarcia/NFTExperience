@@ -23,8 +23,11 @@ export default function Home() {
       </Head>
       <Navbar />
       <main className={styles.main}>
-        <h1 className={styles.title}>
+        <h3>
           Welcome to <a>NFTExperience!</a>
+        </h3>
+        <h1 className={styles.title}>
+        Using dynamic NFTs to enhance experiences around the world.
         </h1>
       </main>
 

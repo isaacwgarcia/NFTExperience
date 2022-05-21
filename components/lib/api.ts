@@ -12,7 +12,7 @@ const IPFS_CLIENT = ipfsHttpClient({
   protocol: "https",
 });
 
-async function uploadMetadata(item) {
+export async function uploadMetadata(item) {
   try {
     const added = await IPFS_CLIENT.add(Buffer.from(JSON.stringify(item)), {
       progress: (prog) => console.log(`received: ${prog}`),

@@ -2,8 +2,8 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import { Box, Grid } from "@mui/material";
 import { hooks } from "../components/connectors/coinbaseWallet";
-
-const { useChainId, useAccounts, useIsActive } = hooks;
+import { Accounts } from "./Accounts";
+const { useChainId, useAccounts, useIsActive, useProvider } = hooks;
 
 import { CHAINS } from "./chains";
 
@@ -11,6 +11,7 @@ export default function Layout({ children }) {
   const accounts = useAccounts();
   const isActive = useIsActive();
   const chainId = useChainId();
+  const provider = useProvider();
 
   return (
     <>
@@ -34,6 +35,9 @@ export default function Layout({ children }) {
           <Box border={1} borderRadius={3} mt={2} width="90%">
             <Box padding={2} overflow="true" fontSize="0.6rem">
               {accounts}
+              <br />
+              <Accounts accounts={accounts} provider={provider} />
+              {}
               <br />
               {isActive ? "Connected to: " + CHAINS[chainId]!.name : ""}
             </Box>

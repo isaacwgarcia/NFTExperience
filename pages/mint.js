@@ -5,27 +5,16 @@ import styles from "../styles/Home.module.css";
 import { coinbaseWallet, hooks } from "../components/connectors/coinbaseWallet";
 import { useRouter } from "next/router";
 import Navbar from "../components/Navbar";
-import {uploadMetadata} from "../components/lib/api"
 import Form from "../components/Form";
 const { useIsActive } = hooks;
 
-
 export default function Home() {
-
   //const [message, setMessage]= useState ("")
   const router = useRouter();
   const isActive = useIsActive();
   useEffect(() => {
     void coinbaseWallet.connectEagerly();
   }, []);
- 
-
-async function handleMint (item)
-{
-  const result = await uploadMetadata(item);
-if (result) 
-setMessage("Minted.")
-}
 
   return (
     <div className={styles.container}>
@@ -40,12 +29,8 @@ setMessage("Minted.")
           <h3 className={styles.centered}>
             Mint an <a>NFTExperience!</a>
           </h3>
-          <h1 className={styles.title}>
-          Mint an Experience!
-          </h1>
-          <p>
-            Fill out the short form below to mint an NFT Experience.
-          </p>
+          <h1 className={styles.title}>Mint an Experience!</h1>
+          <p>Fill out the short form below to mint an NFT Experience.</p>
         </div>
         <div>
           <Form />

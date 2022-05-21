@@ -5,15 +5,28 @@ import styles from "../styles/Home.module.css";
 import { coinbaseWallet, hooks } from "../components/connectors/coinbaseWallet";
 import { useRouter } from "next/router";
 import Navbar from "../components/Navbar";
+import {uploadMetadata} from "../components/lib/api"
+import Form from "../components/Form";
 const { useIsActive } = hooks;
 
+
 export default function Home() {
+
+  //const [message, setMessage]= useState ("")
   const router = useRouter();
   const isActive = useIsActive();
   useEffect(() => {
     void coinbaseWallet.connectEagerly();
   }, []);
-  if (isActive) router.push("/dashboard");
+ 
+
+async function handleMint (item)
+{
+  const result = await uploadMetadata(item);
+if (result) 
+setMessage("Minted.")
+}
+
   return (
     <div className={styles.container}>
       <Head>
@@ -35,25 +48,7 @@ export default function Home() {
           </p>
         </div>
         <div>
-          <form className={styles.form}>
-          <label htmlFor="experienceLocation">
-              Experience Location:
-            </label>
-            <input name="experienceLocation" type="text" placeholder="Enter an experience location..."></input>
-            <label htmlFor="experienceName">
-              Experience Name:
-            </label>
-            <input name="experienceName" type="text" placeholder="Enter an experience name..."></input>
-            <label htmlFor="experienceDescription">
-              Experience Description:
-            </label>
-            <textarea name="experienceDescription" type="text" placeholder="Describe the experience..." />
-            <label htmlFor="experiencePrice">
-              Experience Price:
-            </label>
-            <input name="experiencePrice" type="text" placeholder="Enter a price..."></input>
-            <button>Mint Experience</button>
-          </form>
+          <Form />
         </div>
       </main>
 

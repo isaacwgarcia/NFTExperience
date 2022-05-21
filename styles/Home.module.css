@@ -97,6 +97,10 @@
   font-size: 1.5rem;
 }
 
+.card h4 {
+  margin: 0;
+}
+
 .card p {
   margin: 0;
   font-size: 1.25rem;
@@ -106,6 +110,19 @@
 .logo {
   height: 1em;
   margin-left: 0.5rem;
+}
+
+.section {
+  margin: 50px 0;
+}
+
+.centered {
+  text-align: center;
+}
+
+.buyLink {
+  color:#0070f3;
+  padding: 10px 0px 0px;
 }
 
 @media (max-width: 600px) {

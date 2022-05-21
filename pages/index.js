@@ -37,28 +37,28 @@ export default function Home() {
           <a href="#" className={styles.card}>
             <h4>Miami</h4>
             <h2>Kayak Through Biscayne Bay</h2>
-            <p>Learn about Miami's brand new city center in the financial district. After a bit of retail therapy we're going to swing over the world famous art district called Wynwood.</p>
+            <p>Learn about Miami&apos;s brand new city center in the financial district. After a bit of retail therapy we&apos;re going to swing over the world famous art district called Wynwood.</p>
             <p className={styles.buyLink}>Book this experience →</p>
           </a>
 
           <a href="#" className={styles.card}>
             <h4>Miami</h4>
             <h2>Brickell City Center &amp; Wynwood</h2>
-            <p>Learn about Miami's brand new city center in the financial district. After a bit of retail therapy we're going to swing over the world famous art district called Wynwood.</p>
+            <p>Learn about Miami&apos;s brand new city center in the financial district. After a bit of retail therapy we&apos;re going to swing over the world famous art district called Wynwood.</p>
             <p className={styles.buyLink}>Book this experience →</p>
           </a>
 
           <a href="#" className={styles.card}>
             <h4>Miami</h4>
             <h2>Historic Calle Ocho</h2>
-            <p>Learn about Miami's brand new city center in the financial district. After a bit of retail therapy we're going to swing over the world famous art district called Wynwood.</p>
+            <p>Learn about Miami&apos;s brand new city center in the financial district. After a bit of retail therapy we&apos;re going to swing over the world famous art district called Wynwood.</p>
             <p className={styles.buyLink}>Book this experience →</p>
           </a>
 
           <a href="#" className={styles.card}>
             <h4>Miami</h4>
             <h2>Coconut Grove Tour</h2>
-            <p>Learn about Miami's brand new city center in the financial district. After a bit of retail therapy we're going to swing over the world famous art district called Wynwood.</p>
+            <p>Learn about Miami&apos;s brand new city center in the financial district. After a bit of retail therapy we&apos;re going to swing over the world famous art district called Wynwood.</p>
             <p className={styles.buyLink}>Book this experience →</p>
           </a>
         </div>

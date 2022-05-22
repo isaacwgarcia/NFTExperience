@@ -1,3 +1,27 @@
+
+## CONTRACT DEPLOYMENT 
+
+DynamicNFT Tourista is deployed on Polygon and Rinkeby :
+
+##### Polygon : [Deployed addresss ](https://mumbai.polygonscan.com/address/0x4751deb5Cdc252B50FF7239DD8aEbe87236073D0)
+#### Kovan : [Deployed addresss](https://kovan.etherscan.io/address/0xa1d8387a57419F4fc4fE883A276452Aa57CDB7C1)
+
+
+We are using Coinbase Wallet and Transak to facilite the experience for the user who can buys directly from his Coinbase Wallet using Transak and Fiat Money (USD) some MATIC Tokens. 
+
+
+This DynamicNFT is using Chainlink API requests to store data On-Chain using API data Offchain. We have updated the 2 steps of the transformation of data On-Chain in Polygon and Rinkeby.
+
+
+## PROOF OF EXPERIENCE USING DynamicNFT : 
+
+##### Polygon : [NFT Tourista unixtime START OF EXPERIENCE  ]([https://mumbai.polygonscan.com/address/0x4751deb5Cdc252B50FF7239DD8aEbe87236073D0](https://mumbai.polygonscan.com/tx/0x29841eb95760ea7bfd20b58c23e2c86bebb84b08daafafe10fd3bbd06f8ee553))
+#### Polygon : [NFT Tourista unixtime END OF EXPERIENCE ](https://mumbai.polygonscan.com/tx/0x4538a4b44c70adc23a3f9bf65cfebfacea42ff4932b6b8f2cec290ee22465fbc)
+
+##### Kovan : [NFT Tourista unixtime START OF EXPERIENCE  ](https://kovan.etherscan.io/tx/0xee9ab7e271194806df079ef28760cad0cc337ec80c6d660ee433c367121b86a6)
+#### Kovan : [NFT Tourista unixtime END OF EXPERIENCE ]([https://kovan.etherscan.io/address/0xa1d8387a57419F4fc4fE883A276452Aa57CDB7C1](https://kovan.etherscan.io/tx/0xf2d3b32bea7fc12dc206a49796a4e3218b9c606467522affac1f4e4629371760))
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

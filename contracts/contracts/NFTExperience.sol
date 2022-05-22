@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
-contract APITourista is ChainlinkClient, ERC721URIStorage {
+contract Tourista is ChainlinkClient, ERC721URIStorage {
     using Chainlink for Chainlink.Request;
 
     uint256 public realTime;
@@ -26,10 +26,10 @@ contract APITourista is ChainlinkClient, ERC721URIStorage {
     mapping(bytes32 => string) requestToURI;
     mapping(bytes32 => address) requestToSender;
 
-    UserTourista[] public Touristas;
+    UserTourista[] public TouristaExperience;
 
     // When TimeLeft == 0 emit this Event
-    event TouristaFinished(
+    event StreamingProcessFinished(
         bytes32 firstName,
         bytes32 lastName,
         uint256 TimeLeft
@@ -42,11 +42,21 @@ contract APITourista is ChainlinkClient, ERC721URIStorage {
      * Job ID: d5270d1c311941d0b08bead21fea7747
      * Fee: 0.1 LINK
      */
-    constructor() ERC721("Tourista", "SP") {
-        setPublicChainlinkToken();
-        oracle = 0xc57B33452b4F7BB189bB5AfaE9cc4aBa1f7a4FD8;
-        jobId = "d5270d1c311941d0b08bead21fea7747";
-        fee = 0.1 * 10**18; // (Varies by network and job)
+
+      /**
+     * Network: Mumbai
+     * Oracle Address=0x103Ca41fa1257d5014b04b6B212B251e9E7A740a
+     * ID=88dc5235868341bc9e099c6a70b4bde6
+     * Fee: 0.00 LINK
+     * setChainlinkToken : 0x326C977E6efc84E512bB9C30f76E30c160eD06FB;
+     */
+
+
+    constructor() ERC721("TouristaExp", "TEX") {
+        setChainlinkToken(0x326C977E6efc84E512bB9C30f76E30c160eD06FB);
+        oracle = 0x103Ca41fa1257d5014b04b6B212B251e9E7A740a;
+        jobId = "88dc5235868341bc9e099c6a70b4bde6";
+        fee = 0.0 * 10**18; // (Varies by network and job)
     }
 
     /**
@@ -100,7 +110,7 @@ contract APITourista is ChainlinkClient, ERC721URIStorage {
 
         // Sends the request
         bytes32 requestId = sendChainlinkRequestTo(oracle, request, fee);
-        requestToURI[requestId];
+        requestToURI[requestId] = uri;
         requestToSender[requestId] = msg.sender;
         counter++;
         return requestId;
@@ -110,7 +120,7 @@ contract APITourista is ChainlinkClient, ERC721URIStorage {
         public
         recordChainlinkFulfillment(_requestId)
     {
-        uint256 newId = Touristas.length;
+        uint256 newId = TouristaExperience.length;
         uint256 startingTime;
         uint256 endTime;
         string memory uri;
@@ -118,7 +128,7 @@ contract APITourista is ChainlinkClient, ERC721URIStorage {
         if (counter == 1) {
             realTime = 0;
             uint256 startingTime = realTime;
-            Touristas.push(
+            TouristaExperience.push(
                 UserTourista(
                     requestToURI[_requestId],
                     msg.sender,
@@ -131,7 +141,7 @@ contract APITourista is ChainlinkClient, ERC721URIStorage {
         } else {
             realTime = _realTime;
             uint256 endTime = realTime;
-            Touristas.push(
+            TouristaExperience.push(
                 UserTourista(
                     requestToURI[_requestId],
                     msg.sender,

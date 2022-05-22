@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { autocompleteClasses, Box } from "@mui/material";
 import React from "react";
 import { FormData } from "./lib/types";
 import { Input, Button } from "@nextui-org/react";
@@ -36,16 +36,22 @@ export default function Form() {
       <div>
         <Box
           display="flex"
-          flexDirection="column"
+          flexDirection="row"
           my={2}
           height="75vh"
-          width="75vw"
+          width="100%"
           padding="12px"
           fontSize="0.8rem"
         >
-          <Box my={2}>
+          <Box 
+            display="flex"
+            flexDirection="column"
+            my={2}
+            padding="12px"
+            >
+              <Box my={2}>
             <Input
-              size="sm"
+              size="lg"
               bordered
               labelPlaceholder="Experience Location"
               onChange={(ev) =>
@@ -58,7 +64,7 @@ export default function Form() {
           </Box>
           <Box my={2}>
             <Input
-              size="sm"
+              size="lg"
               bordered
               labelPlaceholder="Name"
               onChange={(ev) =>
@@ -71,7 +77,7 @@ export default function Form() {
           </Box>
           <Box my={2}>
           <Input
-            size="sm"
+            size="lg"
             bordered
             labelPlaceholder="Description"
             onChange={(ev) =>
@@ -84,7 +90,7 @@ export default function Form() {
         </Box>{" "}
         <Box my={2}>
           <Input
-            size="sm"
+            size="lg"
             bordered
             labelPlaceholder="Price"
             onChange={(ev) =>
@@ -98,7 +104,6 @@ export default function Form() {
         <Box>
         <input type="file" name="Asset" className="my-4" onChange={onChange } />
         </Box>
-        {image && <Image src={image} width={200} height={200}/>}
         <Box display="flex" justifyContent="center" padding="2vw">
           <Button
             flat
@@ -128,6 +133,11 @@ export default function Form() {
             Create Form
           </Button>
         </Box>
+          
+        </Box>
+        <div> 
+        {image && <Image src={image} width={200} height={200} layout="fixed"/>}
+        </div>
       </Box>
     </div>
   );

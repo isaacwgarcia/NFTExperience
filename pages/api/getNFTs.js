@@ -8,15 +8,15 @@ export default function handler(req, res) {
         expName: 'Kayak Through Biscayne Bay',
         expLocation: 'Miami',
         expDate: 'Tomorrow',
-        expDesc: 'earn about Miami&apos;s brand new city center in the financial district. After a bit of retail therapy we&apos;re going to swing over the world famous art district called Wynwood.',
+        expDesc: 'earn about Miami\'s brand new city center in the financial district. After a bit of retail therapy we\'re going to swing over the world famous art district called Wynwood.',
         expPrice: '$999.99',
         },
         {
         expId: '02',
-        expName: 'Brickell City Center &amp; Wynwood',
+        expName: 'City Center & Wynwood',
         expLocation: 'Miami',
         expDate: 'Tomorrow',
-        expDesc: 'earn about Miami&apos;s brand new city center in the financial district. After a bit of retail therapy we&apos;re going to swing over the world famous art district called Wynwood.',
+        expDesc: 'Learn about Miami\'s brand new city center in the financial district. After a bit of retail therapy we\'re going to swing over the world famous art district called Wynwood.',
         expPrice: '$999.99',
         },
         {
@@ -24,7 +24,7 @@ export default function handler(req, res) {
         expName: 'Historic Calle Ocho',
         expLocation: 'Miami',
         expDate: 'Tomorrow',
-        expDesc: 'earn about Miami&apos;s brand new city center in the financial district. After a bit of retail therapy we&apos;re going to swing over the world famous art district called Wynwood.',
+        expDesc: 'Learn about Miami\'s brand new city center in the financial district. After a bit of retail therapy we\'re going to swing over the world famous art district called Wynwood.',
         expPrice: '$999.99',
         },
         {
@@ -32,7 +32,7 @@ export default function handler(req, res) {
         expName: 'Coconut Grove Tour',
         expLocation: 'Miami',
         expDate: 'Yesterday',
-        expDesc: 'earn about Miami&apos;s brand new city center in the financial district. After a bit of retail therapy we&apos;re going to swing over the world famous art district called Wynwood.',
+        expDesc: 'Learn about Miami\'s brand new city center in the financial district. After a bit of retail therapy we\'re going to swing over the world famous art district called Wynwood.',
         expPrice: '$999.99',
         }
     ]

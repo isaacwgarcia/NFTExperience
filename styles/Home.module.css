@@ -70,7 +70,6 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
 }
 
 .card {
@@ -95,7 +94,6 @@
 .card h2 {
   margin: 0 0 1rem 0;
   font-size: 25px;
-  width: 600px;
   padding: 10;
 }
 

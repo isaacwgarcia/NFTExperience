@@ -20,8 +20,10 @@ export default function Home() {
     void coinbaseWallet.connectEagerly();
     fetch("/api/getNFTs")
       .then((res) => res.json())
-      .then((nfts) => setNfts(nfts));
-  }, [nfts]);
+      .then((nfts) => {
+        setNfts(nfts);
+      });
+  }, []);
 
   console.log(nfts);
   if (isActive) router.push("/dashboard");

@@ -6,20 +6,8 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 
-/** @title EscrowERC721
- *  @dev This contract implement a simple Escrow contract of an ERC721 token.
- * Contract has an admin to settle disputes. Admin is paid adminFee for handling the escrow contract.
- * Process : Admin deploy contract. Seller create an order, sets token, tokenId and deposit in ETH, blockExpiry for the buyer. Buyer initiate the escrow by sending the NFT. Seller
- * sends order, buyer receives. Contract release funds, `deposit` to buyer, NFT to seller and 
- * `adminFee` to the owner.
- * If no reaction from buyer after a while, order expires and seller can withdraw NFT.
- * Orders can be cancelled by seller or buyer if in an appropriate status.
- * In case of disputes admins decides how to settle.
- */
 contract Escrow is Ownable {
 
-
-    /// PUBLIC VARAIBLES
     OrderStatus public status;
     address payable public buyer;
     address payable public seller;
@@ -32,7 +20,7 @@ contract Escrow is Ownable {
     uint256 public sendBlock;
     uint256 public numBlocksToExpire; 
     
-    enum OrderStatus {BLANK, CREATED, INITIATED, SENT, RECEIVED, CANCELLED, DISPUTED, RESOLVED, EXPIRED}
+    enum OrderStatus {BLANK, CREATED, INITIATED, SENT, RECEIVED, CANCELLED, EXPIRED}
 
 
     event OrderCreated(address _seller, address tokenContract,uint256 tokenId, uint256 _deposit);
@@ -41,8 +29,6 @@ contract Escrow is Ownable {
     event OrderReceived();
     event OrderExpired();
     event OrderCancelled(address canceller);
-    event OrderDisputed(address disputer);
-    event OrderResolved(bool buyerRefundToken,  bool buyerRefundDposit);
 
     /**
      * @dev Throws if called by an account other than the buyer 
@@ -188,41 +174,9 @@ contract Escrow is Ownable {
         
     }
 
-    /**
-    * @dev Change order status to`DISPUTED`. Only the seller or buyer of that order can call it.
-    * Can only be called if order is in state `SENT`.
-    */
-    function disputeOrder( ) public onlyBuyerOrSeller() {
-        require(status == OrderStatus.SENT, "Can't dispute order now");
-        status = OrderStatus.DISPUTED;
-        emit OrderDisputed(msg.sender);
-    }
 
  
-    /**
-    * @dev Change order status to `RESOLVED`. Only the owner of the contract can call it.
-    * Can only be called if order is in state `DISPUTED`.
-    * Release token funds the parties according to resolution.
-    */
-    function resolveDispute(bool buyerRefundToken,  bool buyerRefundDeposit) public onlyOwner() {
-        require(status == OrderStatus.DISPUTED, 'Cant resolve order');
-        status = OrderStatus.RESOLVED;
-        emit OrderResolved(buyerRefundToken, buyerRefundDeposit);
-        payable(owner()).transfer(adminFee);
-        if(buyerRefundToken && buyerRefundDeposit) {
-            IERC721(tokenContract).transferFrom(address(this), buyer, tokenId);
-            buyer.transfer(deposit);
-        } else if(buyerRefundToken && !buyerRefundDeposit) {
-            IERC721(tokenContract).transferFrom(address(this), buyer, tokenId);
-            seller.transfer(deposit);
-        } else if(!buyerRefundToken && buyerRefundDeposit) {
-            IERC721(tokenContract).transferFrom(address(this), seller, tokenId);
-            buyer.transfer(deposit);
-        } else {
-            IERC721(tokenContract).transferFrom(address(this), seller, tokenId);
-            seller.transfer(deposit);
-        }
-
+    
     }
 
 

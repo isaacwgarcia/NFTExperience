@@ -10,7 +10,7 @@ DynamicNFT Tourista is deployed on Polygon and Rinkeby :
 We are using Coinbase Wallet and Transak to facilite the experience for the user who can buys directly from his Coinbase Wallet using Transak and Fiat Money (USD) some MATIC Tokens. 
 
 
-This DynamicNFT is using Chainlink API requests to store data On-Chain using API data Offchain. We have updated the 2 steps of the transformation of data On-Chain in Polygon and Rinkeby.
+This DynamicNFT is using Chainlink API (documentation [here](https://docs.chain.link/docs/request-and-receive-data/) )requests to store data On-Chain using API data Offchain. We have updated the 2 steps of the transformation of data On-Chain in Polygon and Rinkeby.
 
 
 ## PROOF OF EXPERIENCE USING DynamicNFT : 

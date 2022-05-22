@@ -170,6 +170,16 @@
   margin-bottom: 15px;
 }
 
+.navlink {
+  margin: 0 20px 0 0;
+}
+
+.price {
+  font-size: 12px !important;
+  padding: 10px 0;
+  color: olivedrab;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;

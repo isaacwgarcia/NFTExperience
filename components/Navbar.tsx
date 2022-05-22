@@ -2,6 +2,8 @@ import React from "react";
 import { Box } from "@mui/material";
 import { coinbaseWallet, hooks } from "../components/connectors/coinbaseWallet";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import styles from "../styles/Home.module.css";
 
 const {
   useChainId,
@@ -42,6 +44,15 @@ const Navbar = () => {
           justifyContent: "flex-end",
         }}
       >
+        <Link href="/">
+          <a className={styles.navlink}>Home</a>
+        </Link>
+        <Link href="/mint">
+          <a className={styles.navlink}>Mint an Experience</a>
+        </Link>
+        <Link href="https://staging-global.transak.com/?apiKey=71d9cc91-826d-41b6-b6ba-7d8962a9c3e0&amp;cryptoCurrencyCode=MATIC&amp;network=polygon">
+          <a className={styles.navlink}>Add Matic</a>
+        </Link>
         {isActive ? (
           <button
             onClick={() => {

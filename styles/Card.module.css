@@ -1,0 +1,11 @@
+.container {
+    padding: 50px;
+    background: grey;
+    font-size: 40px;
+}
+
+.blue {
+    padding: 50px;
+    background: blue;
+    font-size: 40px;
+}

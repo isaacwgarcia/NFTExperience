@@ -1,20 +1,29 @@
 import Head from "next/head";
 import Image from "next/image";
-import Link from 'next/link';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import { coinbaseWallet, hooks } from "../components/connectors/coinbaseWallet";
 import { useRouter } from "next/router";
 import Navbar from "../components/Navbar";
 import { Alert } from "@mui/material";
 const { useIsActive } = hooks;
+import cardStyle from "../styles/Card.module.css";
 
 export default function Home() {
   const router = useRouter();
   const isActive = useIsActive();
+
+  // example loading NFT data
+  const [nfts, setNfts] = useState([]);
+
   useEffect(() => {
     void coinbaseWallet.connectEagerly();
-  }, []);
+    fetch("/api/getNFTs")
+      .then((res) => res.json())
+      .then((nfts) => setNfts(nfts));
+  }, [nfts]);
+
+  console.log(nfts);
   if (isActive) router.push("/dashboard");
   return (
     <div className={styles.container}>
@@ -33,41 +42,21 @@ export default function Home() {
             Using dynamic NFTs to enhance experiences around the world.
           </h1>
         </div>
-        <div className={styles.section}  >
+        <div className={styles.section}>
           <h2 className={styles.centered}>Featured Experiences</h2>
           <div className={styles.grid}>
-            <Link href="/experiences" >
-              <a href="#" className={styles.card}>
-                <h4>Miami</h4>
-                <h2>Kayak Through Biscayne Bay</h2>
-                <p>Learn about Miami&apos;s brand new city center in the financial district. After a bit of retail therapy we&apos;re going to swing over the world famous art district called Wynwood.</p>
-                <p className={styles.buyLink}>Checkout this experience →</p>
-              </a>
-            </Link>
-
-            <a href="#" className={styles.card}>
-              <h4>Miami</h4>
-              <h2>Brickell City Center &amp; Wynwood</h2>
-              <p>Learn about Miami&apos;s brand new city center in the financial district. After a bit of retail therapy we&apos;re going to swing over the world famous art district called Wynwood.</p>
-              <p className={styles.buyLink}>Checkout this experience →</p>
-            </a>
-
-            <a href="#" className={styles.card}>
-              <h4>Miami</h4>
-              <h2>Historic Calle Ocho</h2>
-              <p>Learn about Miami&apos;s brand new city center in the financial district. After a bit of retail therapy we&apos;re going to swing over the world famous art district called Wynwood.</p>
-              <p className={styles.buyLink}>Checkout this experience →</p>
-            </a>
-
-            <a href="#" className={styles.card}>
-              <h4>Miami</h4>
-              <h2>Coconut Grove Tour</h2>
-              <p>Learn about Miami&apos;s brand new city center in the financial district. After a bit of retail therapy we&apos;re going to swing over the world famous art district called Wynwood.</p>
-              <p className={styles.buyLink}>Checkout this experience →</p>
-            </a>
+            {nfts.map((data, i) => (
+              <div key={i} className={styles.card}>
+                <h4>{data.expLocation}</h4>
+                <h2>{data.expName}</h2>
+                <p>{data.expDesc}</p>
+                <p className={styles.price}>Price: {data.expPrice}</p>
+                <a className={styles.buyLink}>Book this experience →</a>
+              </div>
+            ))}
           </div>
         </div>
-      </main >
+      </main>
 
       <footer className={styles.footer}>
         <a
@@ -81,6 +70,6 @@ export default function Home() {
           </span>
         </a>
       </footer>
-    </div >
+    </div>
   );
 }

@@ -1,5 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
+import { Avatar } from '@mui/material';
+import Chip from '@mui/material/Chip';
+import Link from '@mui/material/Link';
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import { coinbaseWallet, hooks } from "../components/connectors/coinbaseWallet";
@@ -42,7 +45,26 @@ export default function Home() {
             Using dynamic NFTs to enhance experiences around the world.
           </h1>
         </div>
+
         <div className={styles.section}>
+          <div style={{
+            width: '100%',
+            height: 20,
+            backgroundColor: 'red',
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: -60
+          }}>
+            <Image
+              className={styles.image}
+              src="/Images/person1.jpeg"
+              alt="Picture of the author"
+              width={100}
+              height={150}
+              layout="responsive"
+            />
+          </div>
+
           <h2 className={styles.centered}>Featured Experiences</h2>
           <div className={styles.grid}>
             {nfts.map((data, i) => (
@@ -51,7 +73,9 @@ export default function Home() {
                 <h2>{data.expName}</h2>
                 <p>{data.expDesc}</p>
                 <p className={styles.price}>Price: {data.expPrice}</p>
-                <a className={styles.buyLink}>Book this experience →</a>
+                <Link href='/experiences'>
+                  <a className={styles.buyLink}>Book this experience →</a>
+                </Link>
               </div>
             ))}
           </div>

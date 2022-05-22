@@ -121,7 +121,7 @@
 }
 
 .buyLink {
-  color:#0070f3;
+  color: #0070f3;
   padding: 10px 0px 0px;
 }
 
@@ -150,7 +150,13 @@
 }
 
 .navlink {
-  padding: 0 12px;
+  margin: 0 20px 0 0;
+}
+
+.price {
+  font-size: 12px !important;
+  padding: 10px 0;
+  color: olivedrab;
 }
 
 @media (max-width: 600px) {

@@ -30,7 +30,7 @@ export default function Home() {
             Mint an <a>NFTExperience!</a>
           </h3>
           <h1 className={styles.title}>Mint an Experience!</h1>
-          <p>Fill out the short form below to mint an NFT Experience.</p>
+          <p className={styles.centered}>Fill out the short form below to mint an NFT Experience.</p>
         </div>
         <div>
           <Form />

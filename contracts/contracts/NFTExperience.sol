@@ -61,27 +61,9 @@ contract NFTExperience is ChainlinkClient, ERC721URIStorage {
     }
 
     
-
-    /**
-     * Create a Chainlink request to retrieve API response, find the target
-     * data, then multiply by 1000000000000000000 (to remove decimal places from data).
-     */
-
-
-    /**
-     * Callback function
-     */
-
      uint256 public newId;
      uint256 public counter;
 
-    //using Counters for Counters.Counter;
-    //Counters.Counter private _tokenIds;
-
-    modifier onlyMinted(){
-        require(counter == 2 ); 
-        _;
-    }
 
     function mintNFT(address recipient, string memory tokenURI) onlyMinted
         public
@@ -104,6 +86,7 @@ contract NFTExperience is ChainlinkClient, ERC721URIStorage {
         request.add("path", "unixtime"); // add a nested path 
         int timesAmount = 10**18;
         request.addInt("times", timesAmount);
+        
         
         // Sends the request
         bytes32 requestId = sendChainlinkRequestTo(oracle, request, fee);
@@ -147,6 +130,12 @@ contract NFTExperience is ChainlinkClient, ERC721URIStorage {
             );
         }
     
+    }
+
+
+    modifier onlyMinted(){
+        require(counter == 2 ); 
+        _;
     }
     
 }

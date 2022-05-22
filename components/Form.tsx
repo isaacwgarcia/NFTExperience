@@ -5,6 +5,7 @@ import { Input, Button } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import { handleMint, uploadFile } from "./lib/api";
 import Image from "next/image"
+import styles from "../styles/Home.module.css";
   
 export default function Form() {
     const [message, setMessage] = React.useState("");
@@ -102,7 +103,7 @@ export default function Form() {
           />
         </Box>
         <Box>
-        <input type="file" name="Asset" className="my-4" onChange={onChange } />
+        <input type="file" name="Asset" className={styles.uploadFileBtn} onChange={onChange } />
         </Box>
         <Box display="flex" justifyContent="center" padding="2vw">
           <Button

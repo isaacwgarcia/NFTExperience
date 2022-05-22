@@ -2,8 +2,10 @@ import { ethers, providers } from "ethers";
 import Web3Modal from "web3modal";
 import { BigNumber } from "ethers";
 import { create as ipfsHttpClient } from "ipfs-http-client";
-import { NFTEXPERIENCE_ABI } from "../abi"; //JSON of the contract to interact with the frontend
-const NFTEXPERIENCE_CONTRACT = "0x655d855646314e0ba6ad5c5bc81c17e7737e854f"; //CONTRACT DEPLOYED ON -
+import { NFTEXPERIENCE_ABI } from "../abi"; 
+import { APITOURISTA } from "../../contracts/abi/TouristaABI";
+//JSON of the contract to interact with the frontend
+const NFTEXPERIENCE_CONTRACT = "0x655d855646314e0ba6ad5c5bc81c17e7737e854f"; //CONTRACT DEPLOYED ON - polygon
 const RECIPIENT_ADDRESS = ""; //GRAB FROM WALLET COMPONENT -
 
 const IPFS_CLIENT = ipfsHttpClient({
@@ -87,8 +89,13 @@ export async function handleMint(item) {
     NFTEXPERIENCE_ABI,
     signer
   );
-  let transaction = await contract.mintNFT(account[0], uploadedMetadata);
+  //let transaction = await contract.mintNFT(account[0], uploadedMetadata);
+
+  console.log ("")
+  let transaction = await contract.mintNFT(account[0],uploadedMetadata);
+
   let tx = await transaction.wait();
+
   let event = tx.events[0];
   console.log("mint ((((((())))))) EVENT", event);
   let value = event.args[2];

@@ -1,4 +1,4 @@
-module.exports = [
+export const APITOURISTA = [
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
